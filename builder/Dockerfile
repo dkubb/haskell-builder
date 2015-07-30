@@ -17,3 +17,7 @@ RUN stack update
 
 VOLUME /src
 WORKDIR /src
+
+COPY ["build.sh", "/usr/local/sbin/"]
+ENTRYPOINT ["/usr/local/sbin/build.sh"]
+CMD ["--help"]
