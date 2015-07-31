@@ -6,9 +6,9 @@ IFS=$'\n\t'
 if [ $# -eq 0 ] || [ "$1" == '--help' ] || [ "$1" == '-h' ]; then
   echo "Example:" \
        "docker run" \
-       "-v \$(pwd):/src" \
+       "-v \"\$(pwd):/src\"" \
        "-v /var/run/docker.sock:/var/run/docker.sock" \
-       "<container>" \
+       "dkubb/haskell-builder" \
        "<package-name>" \
        "[tag-name]"
   exit 1
