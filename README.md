@@ -18,7 +18,7 @@ A project must include the following files:
 
 ```.
 ├── Dockerfile
-├── hello.cabal
+├── example.cabal
 ├── stack.yaml
 └── ...
 ```
@@ -29,14 +29,14 @@ A project must include the following files:
 # Build the container that performs compilation
 docker build --tag dkubb/haskell-builder builder
 
-# Change to the project directory
-cd ../hello-world
-
-# Build the container with a statically linked binary
+# Build an example container
 docker run \
-  -v "$(pwd):/src" \
+  -v "$(pwd)/example:/src" \
   -v /var/run/docker.sock:/var/run/docker.sock \
   --rm \
   dkubb/haskell-builder \
   hello
+
+# Run the binary inside the docker container
+docker run -it --rm hello:latest
 ```
