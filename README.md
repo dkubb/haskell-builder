@@ -29,8 +29,11 @@ A project must include the following files:
 ## Usage
 
 ```bash
-# Build the container that performs compilation
-docker build --tag dkubb/haskell-builder builder
+# Pull the docker container
+docker pull dkubb/haskell-builder
+
+# OR build it with:
+# docker build --tag dkubb/haskell-builder builder
 
 # Change to the directory containing the project
 cd example
