@@ -46,3 +46,9 @@ docker run \
 # Run the binary inside the docker container
 docker run -it --rm hello:latest
 ```
+
+## Thanks
+
+Thanks to Mitch Tishmack ([mitchy](https://github.com/mitchty)) for his
+[Alpine Linux GHC port](https://github.com/mitchty/alpine-linux-ghc-bootstrap)
+which provides the base docker image for this project.
