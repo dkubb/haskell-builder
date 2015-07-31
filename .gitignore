@@ -1,2 +1,3 @@
-/example/.stack-work
+*.sw[op]
+.stack-work
 /example/build
