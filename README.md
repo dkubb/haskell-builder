@@ -29,9 +29,12 @@ A project must include the following files:
 # Build the container that performs compilation
 docker build --tag dkubb/haskell-builder builder
 
+# Change to the directory containing the project
+cd example
+
 # Build an example container
 docker run \
-  -v "$(pwd)/example:/src" \
+  -v "$(pwd):/src" \
   -v /var/run/docker.sock:/var/run/docker.sock \
   --rm \
   dkubb/haskell-builder \
