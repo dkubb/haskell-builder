@@ -1,7 +1,7 @@
 FROM mitchty/alpine-ghc:latest
 MAINTAINER Dan Kubb <dkubb@fastmail.com>
 
-RUN ["apk", "add", "--update", "docker"]
+RUN ["apk", "add", "--update-cache", "docker"]
 RUN ["cabal", "install", "stack"]
 RUN ["stack", "update"]
 
