@@ -5,7 +5,6 @@ RUN ["apk", "add", "--update-cache", "docker"]
 RUN ["cabal", "install", "stack"]
 RUN ["stack", "update"]
 
-VOLUME /src
 WORKDIR /src
 
 COPY ["build.sh", "/usr/local/sbin/"]
