@@ -1,1 +1,5 @@
+flags: {}
+packages:
+- '.'
+extra-deps: []
 resolver: ghc-7.10
