@@ -1,6 +1,9 @@
 # haskell-builder
 
-A docker container for compiling statically linked binaries written in Haskell
+A docker container for compiling statically linked binaries written in Haskell.
+
+This project is inspired by [golang-builder](https://github.com/CenturyLinkLabs/golang-builder)
+for Go, but provides the same result for Haskell binaries.
 
 ## Overview
 
