@@ -21,10 +21,10 @@ socket=/var/run/docker.sock
 file=Dockerfile
 
 echo "Building $package"
-stack build --ghc-options "$ghc_options" .
+stack build --ghc-options "$ghc_options" -- .
 
 if [ -S $socket -a -r $socket -a -w $socket -a -f $file -a -r $file ]; then
-  ln -snf "$(stack path --dist-dir)/build" .
-  docker build --tag "$tag" --file "$file" .
+  ln -snf -- "$(stack path --dist-dir)/build" .
+  docker build --tag "$tag" --file "$file" -- .
   echo "Created container $tag"
 fi
