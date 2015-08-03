@@ -8,7 +8,9 @@ VOLUME /src
 WORKDIR /src
 
 RUN ["apk", "add", "--update-cache", "docker"]
-RUN ["cabal", "install", "stack"]
-RUN ["stack", "update"]
+
+ENV PATH=/root/.cabal/bin:$PATH
+RUN ["cabal", "install", "--global", "stack"]
+RUN ["stack", "upgrade"]
 
 COPY ["build.sh", "/usr/local/sbin/"]
