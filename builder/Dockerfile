@@ -9,7 +9,6 @@ WORKDIR /src
 
 RUN ["apk", "add", "--update-cache", "docker"]
 
-ENV PATH=/root/.cabal/bin:$PATH
 RUN ["cabal", "install", "--global", "stack"]
 RUN ["stack", "upgrade"]
 
