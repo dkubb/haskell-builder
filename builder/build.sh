@@ -21,7 +21,7 @@ socket=/var/run/docker.sock
 file=Dockerfile
 
 echo "Building $package"
-cabal install --jobs --only-dependencies
+until cabal install --jobs --only-dependencies; do :; done
 cabal configure --ghc-options "$ghc_options"
 cabal build --jobs
 
