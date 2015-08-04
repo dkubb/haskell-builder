@@ -1,3 +1,3 @@
 FROM scratch
-COPY ["build/hello/hello", "/usr/bin/"]
+COPY ["dist/build/hello/hello", "/usr/bin/"]
 ENTRYPOINT ["/usr/bin/hello"]

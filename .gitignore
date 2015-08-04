@@ -1,3 +1,2 @@
 *.sw[op]
-.stack-work
-/example/build
+/example/dist

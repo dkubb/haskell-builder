@@ -9,7 +9,6 @@ WORKDIR /src
 
 RUN ["apk", "add", "--update-cache", "docker"]
 
-RUN ["cabal", "install", "--global", "stack"]
-RUN ["stack", "upgrade"]
+RUN ["cabal", "update"]
 
 COPY ["build.sh", "/usr/local/sbin/"]

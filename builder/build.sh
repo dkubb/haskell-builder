@@ -16,15 +16,16 @@ fi
 
 package="$1"
 tag="${2-"$package":latest}"
-ghc_options=${ghc_options:--O2 -threaded -optl-static -optl-s}
+ghc_options=${ghc_options:--O2 -threaded -static -optl-pthread -optl-static -optl-s}
 socket=/var/run/docker.sock
 file=Dockerfile
 
 echo "Building $package"
-stack build --ghc-options "$ghc_options" -- .
+cabal install --jobs --only-dependencies
+cabal configure --ghc-options "$ghc_options"
+cabal build --jobs
 
 if [ -S $socket -a -r $socket -a -w $socket -a -f $file -a -r $file ]; then
-  ln -snf -- "$(stack path --dist-dir)/build" .
   docker build --tag "$tag" --file "$file" -- .
   echo "Created container $tag"
   echo "Usage: docker run -it --rm $tag [args]"
