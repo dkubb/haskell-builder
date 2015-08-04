@@ -17,12 +17,13 @@ fi
 package="$1"
 tag="${2-"$package":latest}"
 ghc_options=${ghc_options:--O2 -threaded -static -optl-pthread -optl-static -optl-s}
+ld_options=${ld_options:--static -pthread}
 socket=/var/run/docker.sock
 file=Dockerfile
 
 echo "Building $package"
 until cabal install --jobs --only-dependencies; do :; done
-cabal configure --ghc-options "$ghc_options"
+cabal configure --disable-executable-dynamic --disable-shared --ghc-options "$ghc_options" --ld-options "$ld_options"
 cabal build --jobs
 
 if [ -S $socket -a -r $socket -a -w $socket -a -f $file -a -r $file ]; then
