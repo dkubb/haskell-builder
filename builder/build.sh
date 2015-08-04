@@ -28,5 +28,5 @@ cabal build --jobs
 if [ -S $socket -a -r $socket -a -w $socket -a -f $file -a -r $file ]; then
   docker build --tag "$tag" --file "$file" -- .
   echo "Created container $tag"
-  echo "Usage: docker run -it --rm $tag [args]"
+  echo "Usage: docker run -it --rm $tag"
 fi
