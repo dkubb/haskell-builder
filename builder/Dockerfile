@@ -7,7 +7,8 @@ CMD ["--help"]
 VOLUME /src
 WORKDIR /src
 
-RUN ["apk", "add", "--update-cache", "docker"]
+RUN ["apk", "update"]
+RUN until apk add docker; do :; done
 
 RUN ["cabal", "update"]
 
