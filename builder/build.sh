@@ -27,4 +27,5 @@ if [ -S $socket -a -r $socket -a -w $socket -a -f $file -a -r $file ]; then
   ln -snf -- "$(stack path --dist-dir)/build" .
   docker build --tag "$tag" --file "$file" -- .
   echo "Created container $tag"
+  echo "Usage: docker run -it --rm $tag [args]"
 fi
