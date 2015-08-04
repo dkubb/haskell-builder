@@ -22,6 +22,7 @@ socket=/var/run/docker.sock
 file=Dockerfile
 
 echo "Building $package"
+cabal sandbox init
 until cabal install --jobs --only-dependencies; do :; done
 cabal configure --disable-executable-dynamic --disable-shared --ghc-options "$ghc_options" --ld-options "$ld_options"
 cabal build --jobs
