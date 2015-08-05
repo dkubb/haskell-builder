@@ -16,7 +16,7 @@ fi
 
 package="$1"
 tag="${2-"$package":latest}"
-ghc_options=${ghc_options:--static -optl-static -optl-pthread -optl-s}
+ghc_options=${ghc_options:--static -optl-static -optl-pthread}
 socket=/var/run/docker.sock
 file=Dockerfile
 
@@ -25,6 +25,7 @@ cabal sandbox init
 until cabal install --jobs --only-dependencies; do :; done
 cabal configure --ghc-options "$ghc_options"
 cabal build --jobs
+find dist/build -type f -perm -u=x,g=x,o=x -exec strip --strip-all {} +
 
 if [ -S $socket -a -r $socket -a -w $socket -a -f $file -a -r $file ]; then
   docker build --tag "$tag" --file "$file" -- .
