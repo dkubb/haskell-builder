@@ -32,7 +32,7 @@ find dist/build \
   -perm -u=x,g=x,o=x \
   -exec strip --strip-all --enable-deterministic-archives --preserve-dates {} +
 
-if [ -S $socket -a -r $socket -a -w $socket -a -f $file -a -r $file ]; then
+if [ -S $socket ] && [ -r $socket ] && [ -w $socket ] && [ -f $file ] && [ -r $file ]; then
   docker build --tag "$tag" --file "$file" -- .
   echo "Created container $tag"
   echo "Usage: docker run -it --rm $tag"
