@@ -21,18 +21,17 @@ socket=/var/run/docker.sock
 file=Dockerfile
 
 echo "Building $package"
-cabal sandbox init
-until cabal install --jobs --only-dependencies; do :; done
-cabal configure --ghc-options "$ghc_options"
-cabal build --jobs
+stack setup "$(ghc --numeric-version)" --skip-ghc-check
+stack build --ghc-options "$ghc_options" -- .
 
 # Strip all statically linked executables
-find dist/build \
+find "$(stack path --dist-dir)/build" \
   -type f \
   -perm -u=x,g=x,o=x \
   -exec strip --strip-all --enable-deterministic-archives --preserve-dates {} +
 
 if [ -S $socket ] && [ -r $socket ] && [ -w $socket ] && [ -f $file ] && [ -r $file ]; then
+  ln -snf -- "$(stack path --dist-dir)/build" .
   docker build --tag "$tag" --file "$file" -- .
   echo "Created container $tag"
   echo "Usage: docker run -it --rm $tag"

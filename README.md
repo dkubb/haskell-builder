@@ -20,8 +20,9 @@ ENTRYPOINT ["/usr/bin/hello"]
 A project must include the following files:
 
 ```.
-├── project.cabal
-├── Setup.hs
+├── Dockerfile
+├── example.cabal
+├── stack.yaml
 └── ...
 ```
 
