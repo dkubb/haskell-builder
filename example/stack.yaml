@@ -1,5 +1,43 @@
-flags: {}
+flags:
+  text:
+    integer-simple: false
 packages:
 - '.'
-extra-deps: []
+extra-deps:
+- aeson-0.9.0.1
+- aeson-pretty-0.7.2
+- appar-0.1.4
+- attoparsec-0.13.0.1
+- auto-update-0.1.2.2
+- blaze-builder-0.4.0.1
+- byteorder-1.0.4
+- bytestring-builder-0.10.6.0.0
+- case-insensitive-1.2.0.4
+- cmdargs-0.10.13
+- dlist-0.7.1.1
+- hashable-1.2.3.3
+- hex-0.1.2
+- http-date-0.0.6.1
+- http-types-0.8.6
+- http2-1.0.2
+- iproute-1.5.0
+- mtl-2.2.1
+- mwc-random-0.13.3.2
+- network-2.6.2.1
+- primitive-0.6
+- random-1.1
+- scientific-0.3.3.8
+- simple-sendfile-0.2.21
+- stm-2.4.4
+- streaming-commons-0.1.12.1
+- syb-0.5.1
+- text-1.2.1.3
+- unix-compat-0.4.1.4
+- unordered-containers-0.2.5.1
+- vault-0.3.0.4
+- vector-0.11.0.0
+- wai-3.0.3.0
+- warp-3.1.1
+- word8-0.1.2
+- zlib-0.6.1.1
 resolver: nightly-2015-08-21

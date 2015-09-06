@@ -49,7 +49,7 @@ docker run \
   hello
 
 # Run the binary inside the docker container
-docker run -it --rm hello:latest
+docker run -it -p 3000:3000 --rm hello:latest
 ```
 
 ## Thanks
